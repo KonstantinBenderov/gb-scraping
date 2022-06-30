@@ -28,7 +28,7 @@ repos_response = dict()
 repos_response[user] = requests.get(repos_url).json()
 
 # save repos_response in *.json file
-file = 'repos.json'
+file = f'{__file__.split("/")[-1].split(".")[0]}.json'
 with open(file, 'w', encoding='utf-8') as out:
     json.dump(repos_response, out, indent=4, ensure_ascii=False)
 
