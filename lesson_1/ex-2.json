@@ -1,0 +1,11 @@
+{
+    "response": [
+        {
+            "id": 1,
+            "first_name": "Павелъ",
+            "last_name": "Дуровъ",
+            "can_access_closed": true,
+            "is_closed": false
+        }
+    ]
+}
