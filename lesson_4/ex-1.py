@@ -38,8 +38,8 @@ for link in links:
     _news['source'] = _news_block.xpath('.//@href')[0]
 
     # Check db for a record
-    has_news = bool(db_news.find_one({'_id': _id}))
-    if has_news:
+    _has_news = bool(db_news.find_one({'_id': _id}))
+    if _has_news:
         # If yes - overwrite (may be updated)
         db_news.replace_one({'_id': _id}, _news)
         old_news += 1
