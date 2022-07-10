@@ -53,10 +53,12 @@ while True:
             if salary:
                 salary = salary[0].text.replace('\u202f', '').replace(' – ', ' ').split(' ')
                 try:
+                    # salary[0] = int(salary[0])
                     vacancy_data['salary_min'] = int(salary[0])
                 except Exception:
                     vacancy_data['salary_min'] = None
                 try:
+                    # salary[1] = int(salary[1])
                     vacancy_data['salary_max'] = int(salary[1])
                     vacancy_data['currency'] = salary[2]
                 except Exception:
@@ -71,7 +73,7 @@ while True:
         vacancy_data['_id'] = _id
         vacancy_data['employer'] = employer
         vacancy_data['title'] = title_text
-        # vacancy_data['salary'] = salary
+        # vacancy_data['salary'] = salary    
         vacancy_data['href'] = title_href
         vacancy_data['site'] = domain
 
