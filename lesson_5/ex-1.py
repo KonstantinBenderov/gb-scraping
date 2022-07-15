@@ -63,7 +63,7 @@ inbox = Wait(driver, 30).until(
 letters_total = int(driver.find_element(By.XPATH, '//a[@href="/inbox/"]').get_attribute('title').split(' ')[1])
 print()
 
-# Crutch
+# Click to focus on the required element
 up = driver.find_element(By.XPATH, '//span[@class="paginator-container__block"]')
 target = {'x': up.location['x'] + int(up.size['height'] + 5), 'y': up.location['y'] + int(up.size['width'] + 5)}
 actions.move_by_offset(target['x'], target['y']).perform()
@@ -101,7 +101,8 @@ while True:
 
 print(f'New letters: {len(letters_id)}\n')
 print('Getting letters by id...\n')
-# Get letter
+
+# Get letters by id
 for i, _id in enumerate(letters_id):
     try:
         # If letter exists
