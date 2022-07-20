@@ -20,19 +20,22 @@ class LabirintruSpider(scrapy.Spider):
             yield response.follow(link, callback=self.book_parse)
 
     def book_parse(self, response: HtmlResponse):
-        _id = response.xpath("//div[@class='isbn']/text()").get().split(' ')[1].replace('\xa0', '')
         full_title = response.xpath("//h1/text()").get().split(': ')
+        
+        _id = response.xpath("//div[@class='isbn']/text()").get().split(' ')[1].replace('\xa0', '')
         author = full_title[0]
         title = ': '.join(full_title[1:])
         price_old = response.xpath("//span[contains(@class, 'priceold')]/text()").get()
         price_new = response.xpath("//span[contains(@class, 'pricenew')]/text()").get()
+        rating = float(response.xpath("//div[@id='rate']/text()").get())
+        url = response.url
+
         try:
             price_old = int(price_old)
             price_new = int(price_new)
         except Exception:
             pass
-        rating = float(response.xpath("//div[@id='rate']/text()").get())
-        url = response.url
+
         yield BookparserItem(
             _id=_id,
             author=author,
