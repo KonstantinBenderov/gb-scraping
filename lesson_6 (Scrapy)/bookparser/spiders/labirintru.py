@@ -26,6 +26,11 @@ class LabirintruSpider(scrapy.Spider):
         title = ': '.join(full_title[1:])
         price_old = response.xpath("//span[contains(@class, 'priceold')]/text()").get()
         price_new = response.xpath("//span[contains(@class, 'pricenew')]/text()").get()
+        try:
+            price_old = int(price_old)
+            price_new = int(price_new)
+        except Exception:
+            pass
         rating = float(response.xpath("//div[@id='rate']/text()").get())
         url = response.url
         yield BookparserItem(
