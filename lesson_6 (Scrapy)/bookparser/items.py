@@ -12,4 +12,5 @@ class BookparserItem(scrapy.Item):
     title = scrapy.Field()
     price_old = scrapy.Field()
     price_new = scrapy.Field()
+    rating = scrapy.Field()
     url = scrapy.Field()
