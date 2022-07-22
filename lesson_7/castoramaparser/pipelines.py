@@ -40,7 +40,5 @@ class CastoramaPhotosPipeline(ImagesPipeline):
         return item
 
     def file_path(self, request, response=None, info=None, *, item=None):
-        remote_filename = request.url.split('/')[-1]
-        name = remote_filename.split('.')[0]
-        extension = remote_filename.split('.')[1]
-        return f'full/{item["_id"]}-{name}.{extension}'
+        filename = request.url.split('/')[-1]
+        return f'full/{item["_id"]}/{filename}'
